@@ -1,0 +1,15 @@
+<p>
+    <span data-ng-hide="storiesController.tags.length === 0">
+        Tags:
+    </span>
+    <span data-ng-repeat="addedTag in storiesController.tags">
+        <span style="font-size: 11px;background-color: #F5F5F5;padding: 2px;border: solid 1px;border-color: #d3d3d3">
+            <i class="fa fa-tag"></i>&nbsp;{{addedTag.name}}
+            <a href="" style="color:red;"
+                       data-ng-click="storiesController.removeTag($index)"><i class="fa fa-times"></i></a>
+            <input type="hidden"
+                   name="tag"
+                   data-ng-model="addedTag.name">
+        </span>&nbsp;
+    </span>
+</p>

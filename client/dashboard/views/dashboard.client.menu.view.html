@@ -1,0 +1,41 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img src="assets/img/du-logo.png" class="logo" width="100px" style="float: left;margin-right: 10px;margin-top: 10px;"/>
+            <a class="navbar-brand" href="/#!/stories">Strategic Plan Story Bank</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" data-ng-if="window.user !== 'null'">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stories<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/#!/stories"><i class="fa fa-file-text"></i>&nbsp;List Stories</a></li>
+                        <li><a href="/#!/stories/create"><i class="fa fa-file"></i>&nbsp;Add Story</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tags<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/#!/tags"><i class="fa fa-tags"></i>&nbsp;List Tags</a></li>
+                        <li><a href="/#!/tags/create"><i class="fa fa-tag"></i>&nbsp;Add Tag</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as {{user}}<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/#!/users"><i class="fa fa-users"></i>&nbsp;List Users</a></li>
+                        <li><a href="/#!/users/create"><i class="fa fa-user"></i>&nbsp;Add User</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/signout"><i class="fa fa-sign-out"></i>&nbsp;Signout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>

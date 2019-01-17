@@ -1,0 +1,170 @@
+<div class="stories-template">
+
+    <section data-ng-controller="UserController as userController" data-ng-init="userController.findOne()">
+
+        <dashboard-menu user="{{userController.authentication.user.fullName}}"></dashboard-menu>
+
+        <!-- The error message element -->
+        <div data-ng-show="error">
+            <strong data-ng-bind="error"></strong>
+        </div>
+
+        <div flash-message="5000" ></div>
+
+        <form name="userForm" data-ng-submit="userController.update()" novalidate>
+
+            <div class="row">
+
+                <div class="col-md-8">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Edit User</h3></div>
+                        <div class="panel-body">
+
+                            <div class="form-group">
+                                <h4><span class="label label-default">First Name</span></h4>
+                                <label class="sr-only" for="firstName">First Name</label>
+                                <span class="error-container"
+                                      data-ng-show="userForm.firstName.$invalid && userForm.submitted">
+                <small class="error"
+                       data-ng-show="userForm.firstName.$error.required">
+                    <span class="required-field">Please enter a first name.</span>
+                </small>
+            </span>
+
+                                <div class="form-group">
+                                    <input name="firstName"
+                                           type="text"
+                                           data-ng-model="userController.user.firstName"
+                                           id="firstName" class="form-control"
+                                           required>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <h4><span class="label label-default">Last Name</span></h4>
+                                <label class="sr-only" for="lastName">Last Name</label>
+                                <span class="error-container"
+                                      data-ng-show="userForm.lastName.$invalid && userForm.submitted">
+                    <small class="error"
+                           data-ng-show="userForm.lastName.$error.required">
+                        <span class="required-field">Please enter a last name.</span>
+                    </small>
+                </span>
+
+                                <input name="lastName"
+                                       type="text"
+                                       data-ng-model="userController.user.lastName"
+                                       id="lastName" class="form-control"
+                                       required>
+
+                            </div>
+
+                            <div class="form-group">
+                                <h4><span class="label label-default">DU ID</span></h4>
+                                <label class="sr-only" for="username">DU ID</label>
+                                <span class="error-container"
+                                      data-ng-show="userForm.username.$invalid && userForm.submitted">
+                    <small class="error"
+                           data-ng-show="userForm.username.$error.required">
+                        <span class="required-field">Please enter a username.</span>
+                    </small>
+                </span>
+
+                                <input name="username"
+                                       type="text"
+                                       data-ng-model="userController.user.username"
+                                       id="username" class="form-control"
+                                       required>
+
+                            </div>
+
+                            <div class="form-group">
+                                <h4><span class="label label-default">Email</span></h4>
+                                <label class="sr-only" for="email">Email</label>
+                                <span class="error-container"
+                                      data-ng-show="userForm.email.$invalid && userForm.submitted">
+                <small class="error"
+                       data-ng-show="userForm.email.$error.required">
+                    <span class="required-field">Please enter an email.</span>
+                </small>
+            </span>
+
+                                <div class="form-group">
+                                    <input name="email"
+                                           type="text"
+                                           data-ng-model="userController.user.email"
+                                           id="email" class="form-control"
+                                           required>
+                                </div>
+                            </div>
+
+                            <h4><span class="label label-default">Role</span></h4>
+                            <label class="sr-only" for="email">Role</label>
+                                <span class="error-container"
+                                      data-ng-show="userForm.role.$invalid && userForm.submitted">
+                                        <small class="error"
+                                               data-ng-show="userForm.email.$error.required">
+                                            <span class="required-field">Please select a role.</span>
+                                        </small>
+                                </span>
+
+
+                            <input name="role"
+                                   type="radio"
+                                   value="admin"
+                                   data-ng-model="userController.user.role">&nbsp;Admin
+
+                            <input name="role"
+                                   type="radio"
+                                   value="user"
+                                   data-ng-model="userController.user.role">&nbsp;User
+
+                            <br><br>
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit"><i class="fa fa-floppy-o"></i>&nbsp;Save</button>
+                                <!--<input class="btn btn-primary" type="submit" value="Save">-->
+                                <!--<input class="btn btn-warning" type="button" value="Delete" data-ng-click="userController.delete();">-->
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <!--
+                <div class="col-md-4">
+
+                    <div class="panel panel-default">
+
+                        <div class="panel-body">
+
+                            <fieldset>
+                                <legend>Status</legend>
+
+                                <label class="radio-inline">
+
+                                    <input name="status"
+                                           type="radio"
+                                           value="active"
+                                           data-ng-model="userController.user.status"> Active
+                                </label>
+
+                                <label class="radio-inline">
+
+                                    <input name="override"
+                                           type="radio"
+                                           value="inactive"
+                                           data-ng-model="userController.user.status"> Inactive
+                                </label>
+                            </fieldset>
+
+                        </div>
+                    </div>
+                </div>
+                -->
+            </div>
+        </form>
+    </section>
+</div>

@@ -1,0 +1,48 @@
+<div class="stories-template">
+    <section data-ng-controller="UserController as userController" data-ng-init="userController.find()">
+
+        <dashboard-menu user="{{userController.authentication.user.fullName}}"></dashboard-menu>
+
+            <table class="table table-striped table-bordered table-condensed">
+                <tr>
+                    <th>Action</th>
+                    <th>
+                        <a href="" ng-click="userController.order('status')">Status&nbsp;<i
+                                class="fa fa-sort"></i></a>
+                        <span class="sortorder" ng-show="predicate === 'status'" ng-class="{reverse:reverse}"></span>
+                    </th>
+                    <th>First Name</th>
+                    <th>
+                        <a href="" ng-click="userController.order('lastName')">Last Name&nbsp;<i
+                                class="fa fa-sort"></i></a>
+                        <span class="sortorder" ng-show="predicate === 'lastName'" ng-class="{reverse:reverse}"></span>
+                    </th>
+                    <th>Email</th>
+                    <th>DU ID</th>
+                    <th>
+                        <a href="" ng-click="userController.order('role')">Role&nbsp;<i
+                                class="fa fa-sort"></i></a>
+                        <span class="sortorder" ng-show="predicate === 'role'" ng-class="{reverse:reverse}"></span>
+                    </th>
+                </tr>
+                <tr data-ng-repeat="user in userController.users | orderBy:userController.predicate:userController.reverse ">
+                    <td>
+                        <a class="btn btn-xs btn-default" data-ng-href="#!/users/{{user._id}}/edit">Edit</a>
+                    </td>
+                    <td>
+                <span data-ng-if="user.status === 'inactive'">
+                    <a class="btn btn-xs btn-default" data-ng-href="#!/users/{{user._id}}/status/inactive">{{user.status}}</a>
+                </span>
+                <span data-ng-if="user.status === 'active'">
+                    <a class="btn btn-xs btn-default" data-ng-href="#!/users/{{user._id}}/status/active">{{user.status}}</a>
+                </span>
+                    </td>
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.role}}</td>
+                </tr>
+            </table>
+    </section>
+</div>

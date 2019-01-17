@@ -1,0 +1,172 @@
+<div class="stories-template">
+
+    <section data-ng-controller="StoriesController as storiesController" data-ng-init="storiesController.storiesEditFormInit()">
+
+        <dashboard-menu user="{{storiesController.authentication.user.fullName}}"></dashboard-menu>
+
+        <!-- The error message element -->
+        <div data-ng-show="error">
+            <strong data-ng-bind="error"></strong>
+        </div>
+
+        <div flash-message="5000" ></div>
+
+        <form name="storiesForm" data-ng-submit="storiesController.update()" novalidate>
+
+            <div class="row">
+
+                <div class="col-md-8">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Edit Story</h3></div>
+                        <div class="panel-body">
+
+                            <div class="form-group">
+                                <h4><span class="label label-default">Title</span></h4>
+                                <label class="sr-only" for="title">Title</label>
+                                <span class="error-container"
+                                      data-ng-show="storiesForm.title.$invalid && storiesForm.submitted">
+                <small class="error"
+                       data-ng-show="storiesForm.title.$error.required">
+                    <span class="required-field">Please enter a title.</span>
+                </small>
+            </span>
+
+                                <div class="form-group">
+                                    <input name="title"
+                                           type="text"
+                                           data-ng-model="storiesController.story.title"
+                                           id="title" class="form-control"
+                                           required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <h4><span class="label label-default">Story</span></h4>
+                                <label class="sr-only">Story</label>
+                                <text-angular data-ng-model="storiesController.story.story"></text-angular>
+
+                            </div>
+
+                            <div class="form-group">
+                                <h4><span class="label label-default">Author</span></h4>
+                                <label class="sr-only" for="title">Author</label>
+
+                                <input title="Add an author's name here"
+                                       data-toggle="tooltip"
+                                       data-placement="top"
+                                       name="title"
+                                       type="text"
+                                       data-ng-model="storiesController.story.author"
+                                       id="author" class="form-control">
+
+                            </div>
+
+                            <h4><span class="label label-default">Status</span></h4>
+                            <label class="sr-only">Status</label>
+
+                            <input name="status"
+                                   type="radio"
+                                   value="draft"
+                                   data-ng-model="storiesController.story.status">&nbsp;Draft&nbsp;&nbsp;
+
+                            <input name="status"
+                                   type="radio"
+                                   value="final"
+                                   data-ng-model="storiesController.story.status">&nbsp;Final
+
+                            <br><br>
+
+                            <!-- move to directive -->
+                            <p>
+                                <span data-ng-hide="storiesController.story.tags.length === 0">
+                                Tags:
+                                </span>
+                                <span data-ng-repeat="name in storiesController.story.tags">
+                                    <span style="font-size: 11px;background-color: #F5F5F5;padding: 2px;border: solid 1px;border-color: #d3d3d3">
+                                        <i class="fa fa-tag"></i>&nbsp;{{name.name}}
+                                        <a href="" style="color:red;" data-ng-click="storiesController.story.tags.splice($index, 1)"><i class="fa fa-times"></i></a>
+                                    </span>&nbsp;
+                                </span>
+                            </p>
+
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit"><i class="fa fa-floppy-o"></i>&nbsp;Save</button>
+                                <button class="btn btn-danger" type="button" data-ng-click="storiesController.delete();"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="col-md-4">
+
+                    <!-- move to directive -->
+                        <div class="panel panel-default">
+
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Related Links</h3></div>
+
+                            <div class="panel-body">
+
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <label class="sr-only">Related Links</label>
+
+                                        <p data-ng-repeat="relatedLink in storiesController.story.relatedLinks">
+
+                                            <input name="relatedLinks" data-ng-model="relatedLink.name"
+                                                   class="form-control">
+
+                                            <button class="btn btn-danger"
+                                                    ng-click="storiesController.story.relatedLinks.splice($index, 1)"><span>&times;</span>
+                                                    <!-- storiesController.removeRelatedLink($index) -->
+                                            </button>
+                                        </p>
+
+                                        <p>
+                                            <button type="button" class="btn btn-success btn-sm"
+                                                    data-ng-click="storiesController.story.relatedLinks.push({})">add new link
+                                                    <!-- storiesController.addRelatedLink() -->
+                                            </button>
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- move to directive -->
+                        <div class="panel panel-default">
+
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Tags</h3></div>
+
+                            <div class="panel-body">
+
+                                <div class="form-inline">
+
+                                    <p data-ng-repeat="tag in storiesController.tagList">
+
+                                    <span data-ng-hide="storiesController.findTag(tag.name, storiesController.story.tags) === true">
+                                        <label>
+                                            <button style="background-color:#F5F5F5;color:#000;border-color:#d3d3d3" type="button" class="btn btn-primary btn-sm"
+                                                    data-ng-click="storiesController.story.tags.push({name: tag.name})"><!-- storiesController.addTag(tag.name) -->
+
+                                                <span style="font-size: 11px;"><i class="fa fa-tag"></i>&nbsp;{{tag.name}}</span>
+                                            </button>
+                                        </label>
+                                    </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>

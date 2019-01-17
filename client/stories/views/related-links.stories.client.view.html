@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">Related Links</h3></div>
+
+    <div class="panel-body">
+
+        <div class="form-inline">
+            <div class="form-group">
+                <label class="sr-only">Related Links</label>
+
+                <p data-ng-repeat="relatedLink in storiesController.relatedLinks">
+                    <input name="relatedLinks" data-ng-model="relatedLink.name"
+                           class="form-control">
+
+                    <button title="Click to remove link" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom"
+                            ng-click="storiesController.removeRelatedLink($index)"><span>&times;</span>
+                    </button>
+                </p>
+
+                <p>
+                    <button title="Click to add an additional link" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right"
+                            data-ng-click="storiesController.addRelatedLink()"><i class="fa fa-link"></i>&nbsp;add new link
+                    </button>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+</div>

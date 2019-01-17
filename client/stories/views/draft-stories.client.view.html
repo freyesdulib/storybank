@@ -1,0 +1,42 @@
+<div class="stories-template">
+
+    <section data-ng-controller="StoriesController as storiesController" data-ng-init="storiesController.findOne()">
+
+        <dashboard-menu user="{{storiesController.authentication.user.fullName}}"></dashboard-menu>
+
+        <!-- The error message element -->
+        <div data-ng-show="error">
+            <strong data-ng-bind="error"></strong>
+        </div>
+
+        <div flash-message="5000" ></div>
+
+        <form name="scheduleForm" data-ng-submit="storiesController.update()" novalidate>
+
+            <div class="row">
+
+                <div class="col-md-7">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Are you sure you want to change the status of this story?</h3><br><p><i>"{{storiesController.story.title}}"</i></p></div>
+                        <div class="panel-body">
+
+                            <div class="form-group">
+                                <button class="btn btn-danger" type="submit">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                    Change Status to Draft
+                                </button>
+                                <a href="#!/stories" class="btn btn-default" type="button">Cancel</a>
+                            </div>
+
+                            <div class="hide-form">
+                                {{storiesController.story.status = 'draft'}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>

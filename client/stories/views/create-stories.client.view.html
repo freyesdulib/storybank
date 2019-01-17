@@ -1,0 +1,104 @@
+<div class="stories-template">
+
+    <section data-ng-controller="StoriesController as storiesController" data-ng-init="storiesController.storiesCreateFormInit()">
+
+        <dashboard-menu user="{{storiesController.authentication.user.fullName}}"></dashboard-menu>
+
+        <div data-ng-show="error">
+            <strong data-ng-bind="error"></strong>
+        </div>
+
+        <div flash-message="5000" ></div>
+
+        <form class="forms" name="storiesForm" data-ng-submit="storiesController.create()" novalidate>
+
+            <div class="row">
+
+                <div class="col-md-8">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Create Story</h3></div>
+                        <div class="panel-body">
+
+                            <div class="form-group">
+                                <h4><span class="label label-default">Title</span></h4>
+                                <label class="sr-only" for="title">Title</label>
+                                <span class="error-container"
+                                      data-ng-show="storiesForm.title.$invalid && storiesForm.submitted">
+                                    <small class="error" data-ng-show="storiesForm.title.$error.required">
+                                        <span class="required-field">Please enter a title.</span>
+                                    </small>
+                                </span>
+
+                                <input title="Add a story title here"
+                                       data-toggle="tooltip"
+                                       data-placement="top"
+                                       name="title"
+                                       type="text"
+                                       data-ng-model="storiesController.title"
+                                       id="title" class="form-control"
+                                       required>
+
+                            </div>
+
+                            <h4><span class="label label-default">Story</span></h4>
+                            <label class="sr-only" for="title">Story</label>
+
+                            <text-angular title="Add a story here" data-toggle="tooltip"
+                                          data-placement="top" data-ng-model="storiesController.story"></text-angular>
+
+                            <!--
+                            <div class="form-group">
+                            <textarea class="form-control" title="Add a story here" data-ng-model="storiesController.story"></textarea>
+                            </div>
+                            -->
+
+                            <!--<p>Written by: {{storiesController.authentication.user.fullName}}</p>-->
+                            <div class="form-group">
+                                <h4><span class="label label-default">Author</span></h4>
+                                <label class="sr-only" for="title">Author</label>
+
+                                <input title="Add an author's name here"
+                                       data-toggle="tooltip"
+                                       data-placement="top"
+                                       name="title"
+                                       type="text"
+                                       data-ng-model="storiesController.author"
+                                       id="author" class="form-control">
+
+                            </div>
+
+                            <h4><span class="label label-default">Status</span></h4>
+                            <label class="sr-only">Status</label>
+
+                            <input name="status"
+                                   type="radio"
+                                   value="draft"
+                                   data-ng-model="storiesController.status">&nbsp;Draft&nbsp;&nbsp;
+
+                            <input name="status"
+                                   type="radio"
+                                   value="final"
+                                   data-ng-model="storiesController.status">&nbsp;Final
+
+                            <br><br>
+
+                            <tags></tags>
+
+                            <div class="form-group">
+                                <button title="Saves story data" data-toggle="tooltip"
+                                        data-placement="right" class="btn btn-primary" type="submit"><i class="fa fa-floppy-o"></i>&nbsp;Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <related-links></related-links>
+                    <tag-list></tag-list>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>

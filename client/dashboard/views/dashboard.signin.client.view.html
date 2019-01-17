@@ -1,0 +1,35 @@
+<div class="stories-template">
+
+    <stories-menu></stories-menu>
+    <br>
+
+    <div class="row">
+        <div class="col-md-5 col-md-offset-4">
+
+            <div class="panel panel-default">
+                <div class="panel-heading"></div>
+                <div class="panel-body">
+
+                    <div data-ng-show="error">
+                        <strong data-ng-bind="error"></strong>
+                    </div>
+
+                    <form name="loginForm" action="/signin" method="post">
+                        <div class="form-group">
+                            <label class="sr-only" for="duid">DU ID</label>
+
+                            <input type="number" class="form-control" id="duid" name="username" placeholder="DU ID" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="passcode">Passcode</label>
+
+                            <input type="password" class="form-control" id="passcode" name="password" placeholder="Passcode" required>
+                        </div>
+                        <button type="submit" class="btn btn-default"><i class="fa fa-sign-in"></i>&nbsp;Sign in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

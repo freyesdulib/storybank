@@ -1,0 +1,22 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title" title="Click on tag buttons to add to story record">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <div class="form-inline">
+            <p data-ng-repeat="tag in storiesController.tagList">
+                <span data-ng-hide="storiesController.findTag(tag.name, storiesController.tags) === true">
+                    <label>
+                        <button title="Click to add Tag to story"
+                                style="background-color:#F5F5F5;color:#000;border-color:#d3d3d3"
+                                type="button" class="btn btn-primary btn-sm"
+                                data-ng-click="storiesController.addTag(tag.name)">
+
+                            <span style="font-size: 11px;"><i class="fa fa-tag"></i>&nbsp;{{tag.name}}</span>
+                        </button>
+                    </label>
+                </span>
+            </p>
+        </div>
+    </div>
+</div>

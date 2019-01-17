@@ -1,0 +1,29 @@
+<div class="stories-template">
+    <section data-ng-controller="TagsController as tagsController" data-ng-init="tagsController.find()">
+
+        <dashboard-menu user="{{tagsController.authentication.user.fullName}}"></dashboard-menu>
+
+            <table class="table table-striped table-bordered table-condensed">
+                <tr>
+                    <th width="100px">Action</th>
+                    <th>
+                        <a href="" ng-click="tagsController.order('name')">Tag&nbsp;<i
+                                class="fa fa-sort"></i></a>
+                        <span class="sortorder" ng-show="predicate === 'name'" ng-class="{reverse:reverse}"></span>
+                    </th>
+                    <th>Tag Description</th>
+                </tr>
+                <tr data-ng-repeat="tag in tagsController.tags | orderBy:tagsController.predicate:tagsController.reverse ">
+                    <td>
+                        <a class="btn btn-xs btn-default" data-ng-href="#!/tags/{{tag._id}}/edit">Edit</a>
+                    </td>
+                    <td>{{tag.name}}</td>
+                    <td>{{tag.description}}</td>
+                </tr>
+            </table>
+
+        <div data-ng-hide="!tagsController.tags || tagsController.tags.length">
+            No tags yet, why don't you <a href="/#!/tags/create">Create one</a>?
+        </div>
+    </section>
+</div>

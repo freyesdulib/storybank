@@ -1,0 +1,47 @@
+<div class="stories-template">
+
+    <section data-ng-controller="UserController as userController" data-ng-init="userController.findOne()">
+
+        <dashboard-menu user="{{userController.authentication.user.fullName}}"></dashboard-menu>
+
+        <!-- The error message element -->
+        <div data-ng-show="error">
+            <strong data-ng-bind="error"></strong>
+        </div>
+
+        <div flash-message="5000" ></div>
+
+        <form name="userForm" data-ng-submit="userController.update()" novalidate>
+
+            <div class="row">
+
+                <div class="col-md-8">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Are you sure you want to change the status of the user <strong>"{{userController.user.firstName}}
+                                {{userController.user.lastName}}"</strong>?</h3></div>
+                        <div class="panel-body">
+
+                            <div class="form-group">
+                                <button class="btn btn-danger" type="submit">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                    Set to Active
+                                </button>
+                                <a href="#!/users" class="btn btn-default" type="button">Cancel</a>
+                            </div>
+
+                            <div class="hide-form">
+                                {{userController.user.status = 'active'}}
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </form>
+    </section>
+</div>
